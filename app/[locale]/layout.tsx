@@ -20,7 +20,6 @@ import LoginWrapper from './loginWrapper';
 import initTranslations from '@/i18n';
 
 const inter = Inter({ subsets: ['latin'] });
-const i18nNamespaces = ['home'];
 
 export default function RootLayout({
   children,
@@ -37,22 +36,6 @@ export default function RootLayout({
   } else {
     isLoginPage = pathname === `/${locale}/login`;
   }
-
-  const [t, setT] = useState({
-    t: (p0: string) => locale,
-    resources: {}
-  });
-
-  useEffect(() => {
-    const loadTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setT({ t, resources });
-    };
-
-    loadTranslations();
-  }, [locale]);
-
-  console.log(children);
 
   return (
     <html lang={locale} dir={dir(locale)}>

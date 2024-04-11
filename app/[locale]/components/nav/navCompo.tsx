@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { setSelectedQueue } from '@/redux/slices/queue/queueSlice';
 import { useTranslation } from 'react-i18next';
 import initTranslations from '@/i18n';
+import useCustomTranslations from '@/hook/useCustomTranslations';
 
 const i18nNamespaces = ['home'];
 
@@ -22,19 +23,7 @@ function NavItem({ params: { locale } }: { params: { locale: string } }) {
   const dispatch = useAppDispatch();
   const selectedRow = useAppSelector(state => state.isVpn.selectedRow);
 
-  const [t, setT] = useState({
-    t: (p0: string) => locale,
-    resources: {}
-  });
-
-  useEffect(() => {
-    const loadTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setT({ t, resources });
-    };
-
-    loadTranslations();
-  }, [locale]);
+  const t = useCustomTranslations(locale, ['home']);
 
   const normalizePathname = (pathname: string) => {
     const regex = /^\/[a-zA-Z]{2}(\/|$)/;

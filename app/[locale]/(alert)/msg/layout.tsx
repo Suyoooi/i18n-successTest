@@ -4,6 +4,8 @@ import React, { Suspense, useEffect } from 'react';
 import { useState, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import initTranslations from '@/i18n';
+import useCustomTranslations from '@/hook/useCustomTranslations';
+import { local } from 'd3-selection';
 
 const i18nNamespaces = ['home'];
 
@@ -19,19 +21,7 @@ export default function Layout({
   const pathname = usePathname();
   const [index, setIndex] = useState(0);
 
-  const [t, setT] = useState({
-    t: (p0: string) => locale,
-    resources: {}
-  });
-
-  useEffect(() => {
-    const loadTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setT({ t, resources });
-    };
-
-    loadTranslations();
-  }, [locale]);
+  const t = useCustomTranslations(locale, ['home']);
 
   const normalizePathname = (pathname: string) => {
     const regex = /^\/[a-zA-Z]{2}(\/|$)/;

@@ -10,6 +10,7 @@ import Step4 from './content/step4';
 import { InspectionRuleParamType } from './type/type';
 import axios from 'axios';
 import initTranslations from '@/i18n';
+import useCustomTranslations from '@/hook/useCustomTranslations';
 
 const i18nNamespaces = ['home'];
 
@@ -19,19 +20,7 @@ export default function Layout({
 }: {
   params: { locale: string };
 }) {
-  const [t, setT] = useState({
-    t: (p0: string) => locale,
-    resources: {}
-  });
-
-  useEffect(() => {
-    const loadTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setT({ t, resources });
-    };
-
-    loadTranslations();
-  }, [locale]);
+  const t = useCustomTranslations(locale, ['home']);
 
   const router = useRouter();
   const [index, setIndex] = useState(0);

@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { setUserId } from '@/redux/slices/login/authSlice';
 import { useRouter } from 'next/navigation';
 import LanguageChanger from '../LanguageChanger';
-import { useEffect, useState } from 'react';
-import initTranslations from '@/i18n';
 import TranslationsProvider from '../TranslationsProvider';
 import useCustomTranslations from '@/hook/useCustomTranslations';
 
