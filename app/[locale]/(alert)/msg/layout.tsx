@@ -33,9 +33,15 @@ export default function Layout({
     loadTranslations();
   }, [locale]);
 
+  const normalizePathname = (pathname: string) => {
+    const regex = /^\/[a-zA-Z]{2}(\/|$)/;
+    return pathname.replace(regex, '/');
+  };
+  const normalizedPathname = normalizePathname(pathname);
+
   const activeLink = (id: number, contentUrl: string, disableGbn: boolean) => {
     if (disableGbn) {
-      return contentUrl === pathname ? 'nav-link active' : 'nav-link';
+      return contentUrl === normalizedPathname ? 'nav-link active' : 'nav-link';
     } else {
       return 'nav-link disabled';
     }
