@@ -3,14 +3,12 @@ import styles from '../page.module.css';
 import LanguageChanger from '@/app/[locale]/components/LanguageChanger';
 import TranslationsProvider from '@/app/[locale]/components/TranslationsProvider';
 import initTranslations from '@/i18n';
-import VpnPage from '../(messaging)/mlsnList/common/vpnPage';
 
 const i18nNamespaces = ['about'];
 
 async function About({ params: { locale } }: { params: { locale: string } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
-  // console.log('?????', t, resources);
   return (
     <TranslationsProvider
       namespaces={i18nNamespaces}
