@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "request": {
+      "method": "PUT",
+      "uri": "http://192.168.10.7:8080/SEMP/v2/__private_action__/msgVpns/default/queues/test01/deleteMsgs"
+    },
+    "responseCode": 200
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "data": [
+    {
+      "dmrEnabled": false,
+      "maxConnectionCount": 100,
+      "maxMsgSpoolUsage": 600,
+      "msgSpoolCurrentQueuesAndTopicEndpoints": 7,
+      "msgSpoolMsgCount": 1,
+      "msgVpnConnections": 3,
+      "msgVpnConnectionsServiceRestOutgoing": 0,
+      "msgVpnName": "#config-sync",
+      "replicationEnabled": false,
+      "replicationRole": "standby",
+      "serviceRestOutgoingMaxConnectionCount": 100,
+      "state": "up"
+    },
+    {
+      "dmrEnabled": true,
+      "maxConnectionCount": 100,
+      "maxMsgSpoolUsage": 1500,
+      "msgSpoolCurrentQueuesAndTopicEndpoints": 2,
+      "msgSpoolMsgCount": 0,
+      "msgVpnConnections": 1,
+      "msgVpnConnectionsServiceRestOutgoing": 0,
+      "msgVpnName": "default",
+      "replicationEnabled": false,
+      "replicationRole": "standby",
+      "serviceRestOutgoingMaxConnectionCount": 100,
+      "state": "up"
+    },
+    {
+      "dmrEnabled": false,
+      "maxConnectionCount": 100,
+      "maxMsgSpoolUsage": 0,
+      "msgSpoolCurrentQueuesAndTopicEndpoints": 0,
+      "msgSpoolMsgCount": 0,
+      "msgVpnConnections": 1,
+      "msgVpnConnectionsServiceRestOutgoing": 0,
+      "msgVpnName": "test",
+      "replicationEnabled": false,
+      "replicationRole": "standby",
+      "serviceRestOutgoingMaxConnectionCount": 100,
+      "state": "up"
+    }
+  ],
+  "collections": [
+    {},
+    {},
+    {}
+  ],
+  "links": [
+    {},
+    {},
+    {}
+  ],
+  "meta": {
+    "request": {
+      "method": "GET",
+      "uri": "http://192.168.10.7:8080/SEMP/v2/__private_monitor__/msgVpns?select=msgVpnName,state,replicationEnabled,replicationRole,dmrEnabled,msgSpoolCurrentQueuesAndTopicEndpoints,msgSpoolMsgCount,msgVpnConnections,maxConnectionCount,msgVpnConnectionsServiceRestOutgoing,serviceRestOutgoingMaxConnectionCount,maxMsgSpoolUsage&count=20"
+    },
+    "responseCode": 200
+  }
+}

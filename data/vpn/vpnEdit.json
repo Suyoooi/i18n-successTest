@@ -1,0 +1,77 @@
+{
+  "data": {
+    "dmrEnabled": true,
+    "enabled": true,
+    "eventConnectionCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventEgressFlowCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventEgressMsgRateThreshold": {
+      "clearValue": 3000000,
+      "setValue": 4000000
+    },
+    "eventEndpointCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventIngressFlowCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventIngressMsgRateThreshold": {
+      "clearValue": 3000000,
+      "setValue": 4000000
+    },
+    "eventLargeMsgThreshold": 1024,
+    "eventLogTag": "",
+    "eventMsgSpoolUsageThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventPublishClientEnabled": false,
+    "eventPublishMsgVpnEnabled": false,
+    "eventPublishSubscriptionMode": "off",
+    "eventPublishTopicFormatMqttEnabled": false,
+    "eventPublishTopicFormatSmfEnabled": true,
+    "eventSubscriptionCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventTransactedSessionCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventTransactionCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "exportSubscriptionsEnabled": false,
+    "maxConnectionCount": 100,
+    "maxEgressFlowCount": 1000,
+    "maxEndpointCount": 1000,
+    "maxIngressFlowCount": 1000,
+    "maxKafkaBrokerConnectionCount": 0,
+    "maxMsgSpoolUsage": 1500,
+    "maxSubscriptionCount": 500000,
+    "maxTransactedSessionCount": 1000,
+    "maxTransactionCount": 5000,
+    "msgVpnName": "default",
+    "sempOverMsgBusAdminClientEnabled": true,
+    "sempOverMsgBusAdminDistributedCacheEnabled": true,
+    "sempOverMsgBusAdminEnabled": true,
+    "sempOverMsgBusEnabled": true,
+    "sempOverMsgBusShowEnabled": true
+  },
+  "links": {},
+  "meta": {
+    "request": {
+      "method": "GET",
+      "uri": "http://192.168.10.7:8080/SEMP/v2/__private_config__/msgVpns/default?select=msgVpnName,enabled,maxMsgSpoolUsage,eventMsgSpoolUsageThreshold,maxTransactedSessionCount,eventTransactedSessionCountThreshold,maxTransactionCount,eventTransactionCountThreshold,maxEndpointCount,eventEndpointCountThreshold,maxEgressFlowCount,eventEgressFlowCountThreshold,maxIngressFlowCount,eventIngressFlowCountThreshold,maxConnectionCount,eventConnectionCountThreshold,eventEgressMsgRateThreshold,eventIngressMsgRateThreshold,maxSubscriptionCount,eventSubscriptionCountThreshold,maxKafkaBrokerConnectionCount,dmrEnabled,exportSubscriptionsEnabled,eventLargeMsgThreshold,eventLogTag,eventPublishClientEnabled,eventPublishMsgVpnEnabled,eventPublishSubscriptionMode,eventPublishTopicFormatMqttEnabled,eventPublishTopicFormatSmfEnabled,sempOverMsgBusEnabled,sempOverMsgBusAdminEnabled,sempOverMsgBusAdminClientEnabled,sempOverMsgBusAdminDistributedCacheEnabled,sempOverMsgBusShowEnabled"
+    },
+    "responseCode": 200
+  }
+}

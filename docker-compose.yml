@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  front-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: emma_front:v1.0.0
+    ports:
+      - "50004:3000"
+    environment:
+      API_URL: ${API_URL}
+    command: "npm run start"

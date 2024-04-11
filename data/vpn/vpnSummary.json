@@ -1,0 +1,52 @@
+{
+  "data": {
+    "dmrEnabled": true,
+    "eventConnectionCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventEndpointCountThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "eventMsgSpoolUsageThreshold": {
+      "clearPercent": 60,
+      "setPercent": 80
+    },
+    "kafkaBrokerConnectionCount": 0,
+    "maxConnectionCount": 100,
+    "maxEgressFlowCount": 1000,
+    "maxEndpointCount": 1000,
+    "maxKafkaBrokerConnectionCount": 0,
+    "maxMsgSpoolUsage": 1500,
+    "msgReplayActiveCount": 0,
+    "msgReplayFailedCount": 0,
+    "msgReplayInitializingCount": 0,
+    "msgReplayPendingCompleteCount": 0,
+    "msgSpoolCurrentEgressFlows": 0,
+    "msgSpoolCurrentQueuesAndTopicEndpoints": 7,
+    "msgSpoolMsgCount": 35,
+    "msgSpoolUsage": 11878,
+    "msgVpnConnections": 1,
+    "msgVpnConnectionsServiceRestOutgoing": 0,
+    "msgVpnName": "default",
+    "msgVpnTotalLocalUniqueSubscriptions": 11,
+    "replicationEnabled": false,
+    "replicationRole": "standby",
+    "rxByteRate": 0,
+    "rxMsgRate": 0,
+    "serviceRestOutgoingMaxConnectionCount": 100,
+    "state": "up",
+    "txByteRate": 0,
+    "txMsgRate": 0
+  },
+  "collections": {},
+  "links": {},
+  "meta": {
+    "request": {
+      "method": "GET",
+      "uri": "http://localhost:8080/SEMP/v2/__private_monitor__/msgVpns/default?select=msgVpnName,msgSpoolMsgCount,msgVpnConnections,maxConnectionCount,eventConnectionCountThreshold,msgVpnConnectionsServiceRestOutgoing,serviceRestOutgoingMaxConnectionCount,msgSpoolUsage,maxMsgSpoolUsage,eventMsgSpoolUsageThreshold,msgSpoolCurrentQueuesAndTopicEndpoints,maxEndpointCount,eventEndpointCountThreshold,msgSpoolCurrentEgressFlows,maxEgressFlowCount,state,replicationEnabled,replicationRole,msgVpnTotalLocalUniqueSubscriptions,rxMsgRate,rxByteRate,txMsgRate,txByteRate,msgReplayInitializingCount,msgReplayActiveCount,msgReplayPendingCompleteCount,msgReplayFailedCount,dmrEnabled,kafkaBrokerConnectionCount,maxKafkaBrokerConnectionCount"
+    },
+    "responseCode": 200
+  }
+}

@@ -1,0 +1,251 @@
+#dashboard-wrapper {
+    background: #2F3032;
+}
+
+.dash-default-backcolor {
+    background-color: #2f3032;
+}
+
+.dash_hdr_bline {
+	padding-bottom: 5px; 
+	border-bottom: 1px solid #494A4C
+}
+
+.dash-container {
+    display: flex;
+    height: calc(100vh - 49px - 2.1rem); /* header(49px), content_wrap: 2rem */
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* .dash-container div {
+	border: 1px solid #131311
+} */
+
+.dash-item-header {
+    height: 45px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #494a4c;
+}
+
+.dash-item-table {
+    background: transparent;
+}
+
+.dash-item-alert {
+    flex: 1;
+}
+
+.dash-item-footer {
+    /* position: relative;
+    top: 0.2rem; */
+    height: calc(50px - 0.5rem);
+    border-top: 1px solid #494A4C;
+    padding-top: 5px;
+}
+
+.dash-col-flex-container {
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-col-flex-item {
+    background: transparent;
+}
+.dash-col-flex-remain {
+    flex: 1;
+}
+
+.dash-rel-area {
+    position: relative;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.dash-abs-area {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.dash-table-container .tabulator-col {
+    color: #569fff;
+    font-size: 0.9rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+.dash-table-container .tabulator-placeholder {
+    font-size: 30px;
+    color: #838383;
+    text-align: center;
+}
+
+.dash-table-container .tabulator-cell {
+    background: transparent;
+    font-size: 0.813rem;
+}
+
+/* blocked because of small row count.
+.dash-table-container .tabulator-row:last-child {
+    border-bottom: none !important;
+}
+*/
+
+.dash-table-container .tabulator-table {
+    width: 100%;
+}
+
+.tabulator-menu {
+    border: 1px solid #9b9fa7;
+    color: #e1e7f0;
+    background: #2f3032;
+    opacity: 1;
+}
+.tabulator-menu-item:hover {
+    background: #494a4c !important;
+}
+
+.tabulator-menu-separator {
+    border: 1px solid #515558;
+}
+
+/* .tabulator-popup.tabulator-popup-container {
+    position: absolute;
+    background-color: blue;
+} */
+
+/* ref: tabulator styling sample:  
+https://jsiksn.tistory.com/entry/Tabulator-%EB%B0%B0%EA%B2%BD%EC%83%89background-%ED%85%8C%EB%91%90%EB%A6%ACborder-%EB%A7%88%EC%9A%B0%EC%8A%A4%EC%98%A4%EB%B2%84mouseover-%EB%B3%80%EA%B2%BD?category=1375309 
+*/
+
+
+.dash-table-container {
+  /* border: 1px solid lightgray; */
+  padding: 0%;
+  /* margin: 1rem auto; */
+}
+
+.dash-table-container table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.dash-table-container thead {
+  background: #2f3032;
+}
+
+.dash-table-container tr {
+  border-bottom: 1px solid #494a4c;
+  height: 40px;
+}
+
+.dash-table-container .hover-tr {
+  border-bottom: 1px solid #494a4c;
+  height: 40px;
+}
+.dash-table-container .hover-tr:hover {
+  background-color: #414447;
+  cursor: pointer;
+}
+
+.dash-table-container th {
+  border-bottom: 1px solid #494a4c;
+  padding: 2px 4px;
+  align-items: center;
+  height: 40px;
+}
+
+.dash-table-container td {
+  align-items: center;
+  padding: 2px 4px;
+  height: 40px;
+}
+
+
+.dash-table-container .place-holder {
+    font-size: 2rem;
+    color: #838383;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.dash-table-container .cell-content-left {
+    justify-content: left;
+    padding-left: 10px;
+}
+
+.dash-table-container .cell-content-left-nopad {
+    justify-content: left;
+}
+
+.dash-table-container .cell-content-center {
+    justify-content: center;
+}
+
+.dash-table-container .cell-content-right {
+    justify-content: right;
+    padding-right: 10px;
+}
+
+.dash-table-container .cell-content-right-nopad {
+    justify-content: right;
+}
+
+.dash-table-container .grow-col-rel-area {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+} 
+
+.dash-table-container .grow-col-abs-area {
+    position: absolute;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    top: 50%;
+    transform: translate(0%,-50%);
+    left: 0px;
+    right: 0px;
+} 
+
+
+/* .css-1atu56z-MuiPaper-root {
+    height: 100%;
+} */
+
+
+.table-context-menu {
+    border: 1px solid #9b9fa7;
+    color: #e1e7f0;
+    background: #2f3032;
+    opacity: 1;
+}
+.table-context-menu-item {
+    /* border: 1px solid #515558 !important; */
+    font-size: 0.813rem !important;
+}
+.table-context-menu-item:hover {
+    background: #494a4c !important;
+}
+
+.table-context-menu-separator {
+    border: 1px solid #515558;
+}
+
+.dash-table-tooltip {
+    z-index: 99999 !important;
+}
