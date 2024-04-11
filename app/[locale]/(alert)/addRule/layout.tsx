@@ -9,10 +9,30 @@ import Step3 from './content/step3';
 import Step4 from './content/step4';
 import { InspectionRuleParamType } from './type/type';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
+import initTranslations from '@/i18n';
 
-export default function Layout() {
-  const { t } = useTranslation();
+const i18nNamespaces = ['home'];
+
+// export default function Layout() {
+export default function Layout({
+  params: { locale }
+}: {
+  params: { locale: string };
+}) {
+  const [t, setT] = useState({
+    t: (p0: string) => locale,
+    resources: {}
+  });
+
+  useEffect(() => {
+    const loadTranslations = async () => {
+      const { t, resources } = await initTranslations(locale, i18nNamespaces);
+      setT({ t, resources });
+    };
+
+    loadTranslations();
+  }, [locale]);
+
   const router = useRouter();
   const [index, setIndex] = useState(0);
   // step1
@@ -55,25 +75,25 @@ export default function Layout() {
     {
       id: 0,
       // title: 'Select Target For Alert',
-      title: t('MUL_WD_0045'),
+      title: t.t('MUL_WD_0045'),
       contentComponent: <Step1 />
     },
     {
       id: 1,
       // title: 'Inspection Method & Value Configuration',
-      title: t('MUL_WD_0046'),
+      title: t.t('MUL_WD_0046'),
       contentComponent: <Step2 />
     },
     {
       id: 2,
       // title: 'Compose Alert Message',
-      title: t('MUL_WD_0047'),
+      title: t.t('MUL_WD_0047'),
       contentComponent: <Step3 />
     },
     {
       id: 3,
       // title: 'Configure Transmission Channel & Recipients',
-      title: t('MUL_WD_0048'),
+      title: t.t('MUL_WD_0048'),
       contentComponent: <Step4 />
     }
   ];
@@ -362,7 +382,7 @@ export default function Layout() {
                       <li className="breadcrumb-item">
                         <a href="/msg">Alert Management</a> | Anomalies
                       </li>
-                      <li className="breadcrumb-item">Add Alert Rule</li>
+                      <li className="breadcrumb-item">{t.t('MUL_WD_0052')}</li>
                     </ol>
                   </nav>
                 </div>
@@ -390,7 +410,7 @@ export default function Layout() {
                     className="btn hstack btn-outline-light"
                     onClick={handleCancelClick}>
                     {/* Cancel */}
-                    {t('21')}
+                    {t.t('21')}
                   </a>
                 </div>
               </div>
@@ -413,7 +433,7 @@ export default function Layout() {
                               onClick={handlePrevClick}>
                               <i className="sol_i_prev sol_mr_6" />
                               {/* Prev */}
-                              {t('15')}
+                              {t.t('15')}
                             </button>
                           </div>
                           <div className="col-md-6 text-end">
@@ -422,14 +442,14 @@ export default function Layout() {
                                 className="btn btn-md btn-outline-secondary justify-content-end"
                                 onClick={handleConfirmClick}>
                                 {/* Confirm */}
-                                {t('20')}
+                                {t.t('20')}
                               </button>
                             ) : (
                               <button
                                 className="btn btn-md btn-outline-light justify-content-end"
                                 onClick={handleNextClick}>
                                 {/* Next */}
-                                {t('16')}
+                                {t.t('16')}
                                 <i className="sol_i_next sol_ml_6" />
                               </button>
                             )}
