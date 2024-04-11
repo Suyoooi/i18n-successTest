@@ -8,25 +8,14 @@ import LanguageChanger from '../LanguageChanger';
 import { useEffect, useState } from 'react';
 import initTranslations from '@/i18n';
 import TranslationsProvider from '../TranslationsProvider';
-import { useTranslation } from 'react-i18next';
+import useCustomTranslations from '@/hook/useCustomTranslations';
 
 const i18nNamespaces = ['home'];
 
 function HeaderNav({ params: { locale } }: { params: { locale: string } }) {
   const router = useRouter();
-  const [translations, setTranslations] = useState({
-    t: (p0: string) => locale,
-    resources: {}
-  });
 
-  useEffect(() => {
-    const loadTranslations = async () => {
-      const { t, resources } = await initTranslations(locale, i18nNamespaces);
-      setTranslations({ t, resources });
-    };
-
-    loadTranslations();
-  }, [locale]);
+  const translations = useCustomTranslations(locale, ['home']);
 
   const userId = useAppSelector(state => state.auth.userId);
   const dispatch = useAppDispatch();
