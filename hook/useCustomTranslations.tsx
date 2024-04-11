@@ -14,8 +14,7 @@ function useCustomTranslations(locale: string, i18nNamespaces: string[]) {
     };
 
     loadTranslations();
-  }, [locale, i18nNamespaces]);
-
+  }, []);
   return translations;
 }
 
