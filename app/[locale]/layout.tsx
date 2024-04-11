@@ -11,12 +11,13 @@ import HeaderBar from '@/app/[locale]/components/nav/HeaderNav';
 import NavBar from '@/app/[locale]/components/nav/navCompo';
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { dir } from 'i18next';
 import Script from 'next/script';
 import StoreProvider from './StoreProvider';
 import { usePathname } from 'next/navigation';
 import LoginWrapper from './loginWrapper';
+import initTranslations from '@/i18n';
 
 const inter = Inter({ subsets: ['latin'] });
 const i18nNamespaces = ['home'];
@@ -30,10 +31,6 @@ export default function RootLayout({
 }) {
   const pathname = usePathname();
 
-  console.log(pathname);
-
-  console.log('locale ::::: ', locale);
-
   let isLoginPage = false;
   if (locale === 'en') {
     isLoginPage = pathname === `/login`;
@@ -41,7 +38,21 @@ export default function RootLayout({
     isLoginPage = pathname === `/${locale}/login`;
   }
 
-  // const isLoginPage = pathname === '/login';
+  const [t, setT] = useState({
+    t: (p0: string) => locale,
+    resources: {}
+  });
+
+  useEffect(() => {
+    const loadTranslations = async () => {
+      const { t, resources } = await initTranslations(locale, i18nNamespaces);
+      setT({ t, resources });
+    };
+
+    loadTranslations();
+  }, [locale]);
+
+  console.log(children);
 
   return (
     <html lang={locale} dir={dir(locale)}>
