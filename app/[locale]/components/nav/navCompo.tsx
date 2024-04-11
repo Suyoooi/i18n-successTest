@@ -11,13 +11,30 @@ import {
 import { useEffect, useState } from 'react';
 import { setSelectedQueue } from '@/redux/slices/queue/queueSlice';
 import { useTranslation } from 'react-i18next';
+import initTranslations from '@/i18n';
 
-const NavItem = () => {
-  const { t } = useTranslation();
+const i18nNamespaces = ['home'];
+
+// const NavItem = () => {
+function NavItem({ params: { locale } }: { params: { locale: string } }) {
   const router = useRouter();
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const selectedRow = useAppSelector(state => state.isVpn.selectedRow);
+
+  const [t, setT] = useState({
+    t: (p0: string) => locale,
+    resources: {}
+  });
+
+  useEffect(() => {
+    const loadTranslations = async () => {
+      const { t, resources } = await initTranslations(locale, i18nNamespaces);
+      setT({ t, resources });
+    };
+
+    loadTranslations();
+  }, [locale]);
 
   const normalizePathname = (pathname: string) => {
     const regex = /^\/[a-zA-Z]{2}(\/|$)/;
@@ -99,7 +116,7 @@ const NavItem = () => {
       items: [
         {
           id: 10010,
-          name: t('10'),
+          name: t.t('10'),
           activeUrl: ['/dashboard'],
           url: '/dashboard',
           imgUrl: 'sol_i_menu sol_i_dashboard',
@@ -108,7 +125,7 @@ const NavItem = () => {
         },
         {
           id: 10011,
-          name: t('11'),
+          name: t.t('11'),
           activeUrl: [`/monitor`],
           url: `/monitor`,
           imgUrl: 'sol_i_menu sol_i_monitoring',
@@ -117,7 +134,7 @@ const NavItem = () => {
         },
         {
           id: 10012,
-          name: t('12'),
+          name: t.t('12'),
           activeUrl: [
             '/msg',
             '/msg/failure',
@@ -146,7 +163,7 @@ const NavItem = () => {
       items: [
         {
           id: 20010,
-          name: t('13'),
+          name: t.t('13'),
           activeUrl: [
             '/mlsnList',
             '/mlsnm',
@@ -172,7 +189,7 @@ const NavItem = () => {
               ? [
                   {
                     id: 20021,
-                    name: t('13'),
+                    name: t.t('13'),
                     activeUrl: [
                       '/mlsnm',
                       '/mlsnm/settings',
@@ -202,7 +219,7 @@ const NavItem = () => {
       items: [
         {
           id: 30010,
-          name: t('14'),
+          name: t.t('14'),
           activeUrl: [`/about`],
           url: ``,
           imgUrl: 'sol_i_menu sol_i_messagebr',
@@ -278,5 +295,5 @@ const NavItem = () => {
       ))}
     </>
   );
-};
+}
 export default NavItem;

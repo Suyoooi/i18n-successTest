@@ -3,18 +3,35 @@
 import React, { Suspense, useEffect } from 'react';
 import { useState, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { useAppSelector } from '@/hook/hook';
-import { useTranslation } from 'react-i18next';
 import initTranslations from '@/i18n';
 
-export default function Layout(props: { tabs: ReactNode }) {
-  const { t } = useTranslation();
+const i18nNamespaces = ['home'];
 
+// export default function Layout(props: { tabs: ReactNode }) {
+export default function Layout({
+  tabs,
+  params: { locale }
+}: {
+  tabs: ReactNode;
+  params: { locale: string };
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const [index, setIndex] = useState(0);
 
-  console.log('alert msg page:::::', t('MUL_WD_0050'));
+  const [t, setT] = useState({
+    t: (p0: string) => locale,
+    resources: {}
+  });
+
+  useEffect(() => {
+    const loadTranslations = async () => {
+      const { t, resources } = await initTranslations(locale, i18nNamespaces);
+      setT({ t, resources });
+    };
+
+    loadTranslations();
+  }, [locale]);
 
   const activeLink = (id: number, contentUrl: string, disableGbn: boolean) => {
     if (disableGbn) {
@@ -25,16 +42,16 @@ export default function Layout(props: { tabs: ReactNode }) {
   };
 
   const data = [
-    { id: 0, title: t('MUL_WD_0049'), contentUrl: '/msg', disableGbn: true },
+    { id: 0, title: t.t('MUL_WD_0049'), contentUrl: '/msg', disableGbn: true },
     {
       id: 1,
-      title: t('MUL_WD_0050'),
+      title: t.t('MUL_WD_0050'),
       contentUrl: '/msg/failure',
       disableGbn: false
     },
     {
       id: 2,
-      title: t('MUL_WD_0051'),
+      title: t.t('MUL_WD_0051'),
       contentUrl: '/msg/exceptions',
       disableGbn: false
     }
@@ -64,7 +81,7 @@ export default function Layout(props: { tabs: ReactNode }) {
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb mb-0">
                     <li className="breadcrumb-item active" aria-current="page">
-                      {t('MUL_WD_0043')}
+                      {t.t('MUL_WD_0043')}
                     </li>
                   </ol>
                 </nav>
@@ -100,7 +117,7 @@ export default function Layout(props: { tabs: ReactNode }) {
                     <a
                       className="btn hstack btn-outline-info"
                       onClick={() => fnAddRule()}>
-                      + {t('MUL_WD_0043')}
+                      + {t.t('MUL_WD_0043')}
                     </a>
                   </>
                 ) : null}
@@ -109,7 +126,7 @@ export default function Layout(props: { tabs: ReactNode }) {
             {data
               .filter(item => index === item.id)
               .map(item => (
-                <div key={item.id}>{props.tabs}</div>
+                <div key={item.id}>{tabs}</div>
               ))}
           </div>
         </div>

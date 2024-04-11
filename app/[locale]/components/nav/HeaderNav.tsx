@@ -4,19 +4,18 @@ import { useAppDispatch, useAppSelector } from '@/hook/hook';
 import Image from 'next/image';
 import { setUserId } from '@/redux/slices/login/authSlice';
 import { useRouter } from 'next/navigation';
-import ChangeLocale from '../changeModal/changeLocale';
 import LanguageChanger from '../LanguageChanger';
 import { useEffect, useState } from 'react';
 import initTranslations from '@/i18n';
 import TranslationsProvider from '../TranslationsProvider';
-// import TranslationsProvider from '../TranslationsProvider';
+import { useTranslation } from 'react-i18next';
 
 const i18nNamespaces = ['home'];
 
 function HeaderNav({ params: { locale } }: { params: { locale: string } }) {
   const router = useRouter();
   const [translations, setTranslations] = useState({
-    t: () => '',
+    t: (p0: string) => locale,
     resources: {}
   });
 
@@ -28,6 +27,7 @@ function HeaderNav({ params: { locale } }: { params: { locale: string } }) {
 
     loadTranslations();
   }, [locale]);
+
   const userId = useAppSelector(state => state.auth.userId);
   const dispatch = useAppDispatch();
 
@@ -38,7 +38,6 @@ function HeaderNav({ params: { locale } }: { params: { locale: string } }) {
   };
   const modalOpen = useAppSelector(state => state.modal.isOpen);
   const alertOpen = useAppSelector(state => state.alert.isOpen);
-
   return (
     <>
       {modalOpen && <div className="modal_ly_bg" />}
@@ -81,16 +80,13 @@ function HeaderNav({ params: { locale } }: { params: { locale: string } }) {
                   <i className="sol_i_sound"></i>
                 </button>
               </div>
-
               <div className="d-flex flex-wrap gap-2">
-                {/* <ChangeLocale /> */}
                 <TranslationsProvider
                   namespaces={i18nNamespaces}
                   locale={locale}
                   resources={translations.resources}>
                   <LanguageChanger />
                 </TranslationsProvider>
-
                 <div className="btn-group">
                   <a
                     className="btn btn-sm hstack sol_btn_language"
@@ -100,7 +96,8 @@ function HeaderNav({ params: { locale } }: { params: { locale: string } }) {
                   <ul className="dropdown-menu">
                     <li>
                       <a className="dropdown-item" onClick={() => fnLogOut()}>
-                        Logout
+                        {/* Logout */}
+                        {translations.t('09')}
                       </a>
                     </li>
                   </ul>
